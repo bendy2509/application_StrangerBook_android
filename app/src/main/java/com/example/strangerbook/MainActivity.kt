@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.strangerbook.data.model.Post
 import com.example.strangerbook.ui.screens.FeedScreen
 import com.example.strangerbook.ui.screens.SearchScreen
+import com.example.strangerbook.ui.screens.TeamScreen
 import com.example.strangerbook.ui.theme.StrangerBookTheme
 
 class MainActivity : ComponentActivity() {
@@ -45,6 +46,10 @@ fun AppNavigation() {
                 onSearchClick = {
                     println("Ouverture de l'écran de recherche")
                     currentScreen = "search"
+                },
+                onTeamClick = {
+                    println("Ouverture de l'écran équipe")
+                    currentScreen = "team"
                 }
             )
         }
@@ -58,6 +63,14 @@ fun AppNavigation() {
                 onLikeClick = { post -> handleLikeClick(post, context) },
                 onCommentClick = { post -> handleCommentClick(post, context) },
                 onShareClick = { post -> handleShareClick(post, context) }
+            )
+        }
+        "team" -> {
+            TeamScreen(
+                onBackClick = {
+                    println("Retour au feed")
+                    currentScreen = "feed"
+                }
             )
         }
     }
